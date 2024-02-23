@@ -36,6 +36,7 @@ Route::get('/register', [AuthController::class, 'register']);
 //Page routes
 Route::get('/loginview', [PageController::class, 'loginview']);
 Route::get('/loginview', [PageController::class, 'loginview'])->name('loginview');
+Route::get('/login_not_auth', [PageController::class, 'login_not_auth'])->name('login_not_auth');
 
 //Admin routes
 Route::get('/admin_add', [AdminController::class, 'view_add_client'])->middleware('auth');

@@ -16,4 +16,8 @@ class PageController extends Controller
     public function dashboard(){
         return view('/dashboard');
     }
+
+    public function login_not_auth(){
+        return redirect('/')->with('error', 'Please login first');
+    }
 }
