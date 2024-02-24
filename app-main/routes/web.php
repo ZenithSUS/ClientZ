@@ -42,7 +42,7 @@ Route::get('/login_not_auth', [PageController::class, 'login_not_auth'])->name('
 
 //Admin routes
 Route::middleware('auth')->group(function () {
-    Route::get('/admin_add', [AdminController::class, 'view_add_client']);
+    Route::get('/admin_add', [AdminController::class, 'view_add_client'])->name('add');
     Route::post('/add_client_action', [AdminController::class, 'add_client_action']);
     Route::get('/admin_edit/{id}', [AdminController::class, 'view_edit_client']);
     Route::post('/edit_client_action/{id}', [AdminController::class, 'edit_client_action']);

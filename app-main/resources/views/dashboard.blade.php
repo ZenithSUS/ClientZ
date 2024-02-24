@@ -18,6 +18,14 @@
           h1 {
               font-size: 24px;
           }
+          main{
+              margin-left: 0;
+              margin-top: 60px;
+              min-height: 100vh;
+              padding: 20px;
+              background-color: #f8f9fa;
+              border-radius: 8px;
+          }
           /* Add more specific styles for small devices as needed */
         }
         
@@ -29,6 +37,15 @@
           }
           h1 {
               font-size: 28px;
+          }
+          main {
+              margin-left: 220px;
+              margin-top: 60px;
+              min-height: 100vh;
+              padding: 20px;
+              background-color: #f8f9fa;
+              border-radius: 8px;
+              box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
           }
           /* Add more specific styles for medium devices as needed */
         }
@@ -62,156 +79,34 @@
     @include('/layouts/header')
 <main class="container text-center p-3 rounded shadow d-flex flex-column justify-content-center align-items-center" style="margin-left: 220px; min-height: 100vh; margin-top: 60px;">
 <h3 class="text-dark fw-bold">Welcome {{auth()->user()->name}}</h3>
-<div class="container text-center mt-3 d-flex justify-content-center align-items-center flex-column bg-light rounded shadow p-3 w-100">
-  <h1 class="text-center">Clients</h1>
-<table class="table table-striped table-hover table-bordered table-responsive mt-3 text-center w-50 mx-auto mb-4">
-  <thead>
-    <tr>
-      <th scope="col">ID</th>
-      <th scope="col">First</th>
-      <th scope="col">Middle</th>
-      <th scope="col">Last</th>
-      <th scope="col">Email</th>
-      <th scope="col">Phone</th>
-      <th scope="col">Action</th>
-    </tr>
-  </thead>
-  <tbody>
-    @foreach($clients as $client)
-    <tr>
-      <th scope="row">{{$client->id}}</th>
-      <td>{{$client->first_name}}</td>
-      <td>{{$client->middle_name}}</td>
-      <td>{{$client->last_name}}</td>
-      <td>{{$client->email}}</td>
-      <td>{{$client->phone}}</td>
-      <td class="d-flex justify-content-center align-items-center gap-2"><button class="btn btn-primary"><a href="/admin_edit/{{$client->id}}" class="text-light text-decoration-none">Edit</a></button> 
-          <button class="btn btn-danger"><a href="/admin_delete/{{$client->id}}" class="text-light text-decoration-none">Delete</a></button>
-          <button class="btn btn-primary"><a href="/admin_view/{{$client->id}}" class="text-light text-decoration-none">View</a></button>
-      </td>
-    </tr>
-    @endforeach
-  </tbody>
-</table>
-@if (session('success'))
-    <div id="successMessage" class="alert alert-success">
-        {{ session('success') }}
+
+<section class="container mt-3 d-flex justify-content-center align-items-center bg-light rounded shadow p-3 flex-column">
+  <h1>Dashboard</h1>
+  <div class="container d-flex justify-content-between align-items-center flex-wrap w-100 mt-3" style="white-space: nowrap">
+    <div class="bg-info rounded p-5 text-start w-25 col mx-3 text-white h-100">
+      <h1>Clients <br> {{$total_clients}}</h1>
     </div>
-@endif
-</div>
-
-
-<table class="table table-striped table-hover table-bordered mt-3 text-center w-75 mx-auto mb-4">
-  <thead>
-    <tr>
-      <th scope="col text-center">Admin Actions</th>
-    </tr>
-  </thead>
-    <tr>
-        <td>
-            <button class="btn btn-primary"><a href="/admin_add" class="text-light text-decoration-none">Add Client</a></button>
-            <button class="btn btn-primary"><a href="{{route('admin_view_inactive')}}" class="text-light text-decoration-none">View Inactive Clients</a></button>
-            <button class="btn btn-primary"><a href="{{route('admin_sort')}}" class="text-light text-decoration-none">Sort Clients by Last Name</a></button>
-            <button class="btn btn-primary"><a href="{{route('admin_sort_email')}}" class="text-light text-decoration-none">Sort Clients by Email</a></button>
-        </td>
-    </tr>
-</table>
-
-<section class="container text-center mt-3 d-flex justify-content-center align-items-center bg-light rounded shadow p-3 flex-column">
-<h1 class="text-center">Client Statistics</h1>
-<div class="container text-center mt-3 d-flex justify-content-center align-items-center">
-  <div class="row bg-secondary p-3 m-3 rounded d-flex justify-content-center">
-    <h1 class="text-center mt-3 mb-3">Population of Clients</h1>
-    <div class="row">
-      <div class="col">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Total Clients</h5>
-            <p class="card-text text-primary text-center text-bold fs-1">{{$total_clients}}</p>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Active Clients</h5>
-            <p class="card-text text-success text-center text-bold fs-1">{{$active_clients}}</p>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Inactive Clients</h5>
-            <p class="card-text text-danger text-center text-bold fs-1">{{$inactive_clients}}</p>
-          </div>
-        </div>
-      </div>
+    <div class="bg-success rounded p-5 text-start w-25 col mx-3 text-white h-100">
+      <h1>Active Clients <br> {{$active_clients}}</h1>
+    </div>
+    <div class="bg-warning rounded p-5 text-start w-25 col mx-3 text-white h-100">
+      <h1>Inactive Clients <br> {{$inactive_clients}}</h1>
     </div>
   </div>
-  <div class="row bg-secondary p-3 m-3 rounded d-flex justify-content-center align-items-center">
-    <h1 class="text-center mt-3 mb-3">Completed Projects</h1>
-    <div class="row">
-      <div class="col">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Total Projects</h5>
-            <p class="card-text text-primary text-center text-bold fs-1">0</p>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Completed Projects</h5>
-            <p class="card-text text-success text-center text-bold fs-1">0</p>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Incomplete Projects</h5>
-            <p class="card-text text-danger text-center text-bold fs-1">0</p>
-          </div>
-        </div>
-      </div>
+  <div class="container d-flex justify-content-between align-items-center w-100 mt-3" style="white-space: nowrap">
+    <div class="rounded p-5 text-start w-25 col mx-3" style="background-color: darkblue; color: white">
+      <h1>Departments <br> 10</h1>
+    </div>
+    <div class="rounded p-5 text-start w-25 col mx-3" style="background-color: darkred; color: white">
+      <h1>Total Payment <br> N/A</h1>
+    </div>
+    <div class="rounded p-5 text-start w-25 col mx-3" style="background-color: darkgreen; color: white">
+      <h1>Total Income <br> N/A</h1>
     </div>
   </div>
-</div>
-
-<div class="container text-center mt-3 d-flex justify-content-center align-items-center">
-  <div class="row bg-secondary p-3 m-3 rounded d-flex justify-content-center align-items-center">
-    <h1 class="text-center mt-3 mb-3">Monthly Revenue</h1>
-    <div class="row">
-      <div class="col">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">January</h5>
-            <p class="card-text text-primary text-center text-bold fs-1">100</p>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">February</h5>
-            <p class="card-text text-primary text-center text-bold fs-1">100</p>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">March</h5>
-            <p class="card-text text-primary text-center text-bold fs-1">100</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 </section>
+
+
 </main>
 
 

@@ -10,7 +10,13 @@
                 display: none;
                 width: 100%;
             }
+            .sidebar a {
+                display: none;
+                width: 100%;
+            }
         }
+       
+        @media screen and (min-width: 1024px) {
         .sidebar {
             position: fixed;
             top: 0;
@@ -32,6 +38,10 @@
             color: #333;
             transition: background-color 0.3s ease-in-out;
         }
+        .sidebar a:hover {
+            background-color: #dee2e6;
+        }
+    }
     </style>
     <title>Navbar</title>
 </head>
@@ -44,9 +54,9 @@
         <ul class="sidebar-nav mt-2 mb-2 ms-2 list-unstyled d-flex flex-column fw-bold">
             <li><a href="/dashboard" class="text-decoration-none text-dark">&#9751; Dashboard</a></li>
             <li><a href="/clients" class="text-decoration-none text-dark">&#9756; Clients</a></li>
-            <li><a href="/reports" class="text-decoration-none text-dark">&#9779; Reports</a></li>
-            <li><a href="/timeline" class="text-decoration-none text-dark">&#9862; Timeline</a></li>
-            <li><a href="/activity" class="text-decoration-none text-dark">&#8486; Activity</a></li>
+            <li><a href="{{ route('add') }}" class="text-decoration-none text-dark">&#9755; Add Client</a></li>
+            <li><a href="/payments" class="text-decoration-none text-dark">&#9862; Payments</a></li>
+            <li><a href="/general" class="text-decoration-none text-dark">&#8486; General Management</a></li>
         </ul>
         </div>
         <h4 class="fw-bold">Settings</h4>

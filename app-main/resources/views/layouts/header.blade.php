@@ -5,35 +5,38 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
     <style>
-        @media screen and (max-width: 600px) {
-            .navbar {
-                flex-direction: column;
-                align-items: flex-start;
+        @media only screen and (min-width: 1024px) {
+            .header {
+                background-color: #f8f9fa;
+                border-bottom: 1px solid #e9ecef;
+                box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+                height: 60px;
+                margin-left: 200px;
+                position: fixed;
+                width: calc(100% - 180px);
+                padding: 0 20px;
+                top: 0;
+                z-index: 1;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                gap: 10px;
+                font-size: 18px;
+                font-weight: 500;
+                margin-top: 0;
+                margin-bottom: 0;
+                padding: 0;
+                overflow: hidden;
+                float: left;
             }
         }
-        .header{
-            background-color: #f8f9fa;
-            border-bottom: 1px solid #e9ecef;
-            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-            height: 60px;
-            margin-left: 200px;
-            position: fixed;
-            width: calc(100% - 180px);
-            padding: 0 20px;
-            top: 0;
-            z-index: 1;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 10px;
-            font-size: 18px;
-            font-weight: 500;
-            margin-top: 0;
-            margin-bottom: 0;
-            padding: 0;
-            overflow: hidden;
-            float: left;
-        }   
+        @media screen and (max-width: 768px) {
+            .header {
+                display: none;
+                width: 100%;
+                background-color: #f8f9fa;
+            }
+        }
     </style>
     <title>Navbar</title>
 </head>
