@@ -127,5 +127,11 @@ class AdminController extends Controller
         }
     }
 
+    public function view_reports(){
+        return view('/actions/feature_action/reports');
+    }
 
+    public function view_clients(){
+        return view('/actions/feature_action/clients', ['clients' => Client::all()->where('status', 'active')]);
+    }
 }

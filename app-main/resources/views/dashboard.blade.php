@@ -60,11 +60,11 @@
 @if(auth()->check())
     @include('/layouts/sidebar')
     @include('/layouts/header')
-<main class="container text-center p-3 rounded shadow d-flex flex-column justify-content-center align-items-center" style="margin-left: calc(220px + 20px); margin-top: 60px">
+<main class="container text-center p-3 rounded shadow d-flex flex-column justify-content-center align-items-center" style="margin-left: 220px; min-height: 100vh; margin-top: 60px;">
 <h3 class="text-dark fw-bold">Welcome {{auth()->user()->name}}</h3>
 <div class="container text-center mt-3 d-flex justify-content-center align-items-center flex-column bg-light rounded shadow p-3 w-100">
   <h1 class="text-center">Clients</h1>
-<table class="table table-striped table-hover table-bordered mt-3 text-center w-50 mx-auto mb-4">
+<table class="table table-striped table-hover table-bordered table-responsive mt-3 text-center w-50 mx-auto mb-4">
   <thead>
     <tr>
       <th scope="col">ID</th>

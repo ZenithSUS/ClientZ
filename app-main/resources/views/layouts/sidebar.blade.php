@@ -43,7 +43,8 @@
         <div class="d-flex align-items-center gap-3 ms-2" style="margin-right: 20px;">
         <ul class="sidebar-nav mt-2 mb-2 ms-2 list-unstyled d-flex flex-column fw-bold">
             <li><a href="/dashboard" class="text-decoration-none text-dark">&#9751; Dashboard</a></li>
-            <li><a href="/admin_profile" class="text-decoration-none text-dark">&#9779; Reports</a></li>
+            <li><a href="/clients" class="text-decoration-none text-dark">&#9756; Clients</a></li>
+            <li><a href="/reports" class="text-decoration-none text-dark">&#9779; Reports</a></li>
             <li><a href="/timeline" class="text-decoration-none text-dark">&#9862; Timeline</a></li>
             <li><a href="/activity" class="text-decoration-none text-dark">&#8486; Activity</a></li>
         </ul>

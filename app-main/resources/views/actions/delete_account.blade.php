@@ -18,17 +18,18 @@
     @if(auth()->check())
     @include('/layouts/sidebar')
     @include('/layouts/header')
-    <main class="container text-center mt-5" style="margin-left: 200px">
-    <div class="container mt-5 text-center p-5 bg-light rounded shadow p-3 mb-5 w-50">
+    <main class="container text-center d-flex flex-column justify-content-center align-items-center" style="min-height: 100vh; margin-left: 220px">
+    <div class="container text-center p-5 bg-light rounded shadow p-3 mb-5 w-50">
         <h1>Delete Account</h1>
-        <p class="lead">Are you sure you want to delete your account?</p>
+        <p class="lead">Are you sure you want to delete your account?</p> 
+        <p class="text-danger">This action cannot be undone</p>
         <form action="/delete_account_action" method="post">
             @csrf
             <div class="container d-flex justify-content-center align-items-center gap-3">
-                <button class="btn btn-primary" type="submit">Yes</button>
-                <button class="btn btn-primary"><a href="/dashboard" class="text-light text-decoration-none">No</a></button>
+                <button class="btn btn-danger" type="submit">Confirm Delete</button>
             </div>
         </form>
+        <button class="btn btn-primary"><a href="/dashboard" class="text-light text-decoration-none">Go Back</a></button> 
     </div>
     </main>
     @else

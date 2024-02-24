@@ -18,7 +18,7 @@
     @if(auth()->check())
     @include('/layouts/sidebar')
     @include('/layouts/header')
-    <main class="container mt-5">
+    <main class="container" style="min-height: 100vh; margin-top: 100px; margin-left: 220px">
         
     <div class="container mt-5 p-5 bg-light rounded shadow mb-5 w-50 rounded shadow d-flex flex-column justify-content-center align-items-center">
         <h1 class="text-center">Change Password</h1>
