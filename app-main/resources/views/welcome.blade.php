@@ -34,32 +34,19 @@
       }
     }
     /* For small screens */
-    @media (max-width: 767px) {
-      .col-lg-4 .img-fluid {
+    @media (min-width: 300px) and (max-width: 767px) {
+      .col-lg-4 {
         width: 100%; /* Change the width for small screens */
         margin-bottom: 10px; /* Add some bottom margin for better spacing */
       }
-    }
-    
-    /* For medium screens */
-    @media (min-width: 768px) and (max-width: 991px) {
-      .col-lg-4 .img-fluid{
-        width: 50%; /* Change the width for medium screens */
+      .img-fluid {
         margin-bottom: 10px; /* Add some bottom margin for better spacing */
       }
     }
-    
-    /* For large screens */
-    @media (min-width: 992px) {
-      .col-lg-4 .img-fluid {
-        width: 33.33%; /* Change the width for large screens */
-        margin-bottom: 0; /* Reset the bottom margin */
-      }
-    }
   </style>
-  <div class="card mb-3" style="max-width: 540px margin: 0 auto bg-color: #f5f5f5">
+  <div class="card mb-3" style="bg-color: #f5f5f5">
     <div class="row g-0 d-flex align-items-center justify-content-center rounded rounded-t-5">
-      <div class="col-lg-4 d-none d-lg-flex">
+      <div class="col-lg-4 d-lg-flex d-none">
         <img src="https://mdbootstrap.com/img/new/ecommerce/vertical/004.jpg" alt="Header Image"
           class="d-block img-fluid w-100 rounded-t-5 rounded-tr-lg-0 rounded-bl-lg-5">
       </div>

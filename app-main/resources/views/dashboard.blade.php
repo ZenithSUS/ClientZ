@@ -10,7 +10,7 @@
             background-color: #f8f9fa;
         }
         /* For small devices (phones) */
-        @media only screen and (max-width: 600px) {
+        @media only screen and (min-width: 600px) {
           /* Add your responsive styles for small devices here */
           body {
               font-size: 14px;

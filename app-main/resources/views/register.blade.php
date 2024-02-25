@@ -10,9 +10,9 @@
         body {
             background-color: #f2f2f2;
         }
-        @media (max-width: 576px) {
+        @media (min-width: 300px) and (max-width: 800px) {
             .container {
-                max-width: 100%;
+                width: 100%;
                 padding: 20px;
                 margin: 0;
                 border-radius: 0;
@@ -23,7 +23,15 @@
             .form-group {
                 margin-bottom: 10px;
             }
+            .form-control {
+                margin-bottom: 10px;
+                padding: 10px;
+                font-size: 14px;
+                border-radius: 5px;
+                box-shadow: none;
+            }
         }
+
     </style>
 </head>
 <body>
