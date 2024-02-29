@@ -24,31 +24,33 @@
       animation: fadeOut 3s;
     }
 
-    @media (min-width: 992px) {
-      .rounded-tr-lg-0 {
-        border-top-right-radius: 0;
+    @media screen and (max-width: 768px) {
+      .card {
+        background-color: #f5f5f5;
       }
 
-      .rounded-bl-lg-5 {
-        border-bottom-left-radius: 0.5rem;
+      .card-body {
+        padding: 0;
       }
-    }
-    /* For small screens */
-    @media (min-width: 300px) and (max-width: 767px) {
-      .col-lg-4 {
-        width: 100%; /* Change the width for small screens */
-        margin-bottom: 10px; /* Add some bottom margin for better spacing */
+
+      .form-outline {
+        margin-bottom: 0.5rem;
       }
-      .img-fluid {
-        margin-bottom: 10px; /* Add some bottom margin for better spacing */
+
+      .form-label{
+        margin-bottom: 0.5rem;
+      }
+
+      .img-sm {
+        display: none;
       }
     }
   </style>
   <div class="card mb-3" style="bg-color: #f5f5f5">
     <div class="row g-0 d-flex align-items-center justify-content-center rounded rounded-t-5">
-      <div class="col-lg-4 d-lg-flex d-none">
+      <div class="col-lg-4 img-sm">
         <img src="https://mdbootstrap.com/img/new/ecommerce/vertical/004.jpg" alt="Header Image"
-          class="d-block img-fluid w-100 rounded-t-5 rounded-tr-lg-0 rounded-bl-lg-5">
+          class="d-block w-100 rounded-t-5 rounded-tr-lg-0 rounded-bl-lg-5">
       </div>
       <div class="col-lg-8">
         <div class="card-body py-5 px-md-5">

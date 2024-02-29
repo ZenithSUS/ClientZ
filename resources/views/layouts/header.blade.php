@@ -11,9 +11,7 @@
                 border-bottom: 1px solid #e9ecef;
                 box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
                 height: 60px;
-                margin-left: 200px;
-                position: fixed;
-                width: calc(100% - 180px);
+                width: calc(100% - 220px);
                 padding: 0 20px;
                 top: 0;
                 z-index: 1;
@@ -28,14 +26,21 @@
                 padding: 0;
                 overflow: hidden;
                 float: left;
+                margin-left: 220px;
             }
         }
         @media screen and (max-width: 768px) {
             .header {
-                display: none;
                 width: 100%;
                 background-color: #f8f9fa;
+                border-bottom: 1px solid #e9ecef;
+                box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+                height: 60px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
             }
+
         }
     </style>
     <title>Navbar</title>
@@ -45,7 +50,7 @@
         <div class="ml-2 p-3">
             <h2 class="fw-bold text-dark mb-0 text-decoration-none">Admin Dashboard</h2>
         </div>
-        <div class="d-flex align-items-center gap-3" style="margin-right: 20px;">
+        <div class="d-flex align-items-center gap-3" style="">
             <a href="/logout" class="text-decoration-none text-dark">Logout</a>
             <a href="/admin_profile" class="text-decoration-none text-dark">Profile</a>
         </div>

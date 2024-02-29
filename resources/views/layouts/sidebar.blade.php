@@ -15,6 +15,18 @@
                 width: 100%;
             }
         }
+
+        @media only screen and (min-width: 1024px) {
+            .sidebar {
+                width: 220px;
+                background-color: #f8f9fa;
+                border-right: 1px solid #dee2e6;
+                box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+                height: 100%;
+                position: fixed;
+                top: 0;
+            }
+        }
        
         @media screen and (min-width: 1024px) {
         .sidebar {

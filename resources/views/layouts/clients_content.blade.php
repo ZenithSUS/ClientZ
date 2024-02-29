@@ -3,12 +3,59 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Client Content</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        @media only screen and (min-width: 1024px) {
+            #main {
+                width: calc(100% - 220px);
+                margin-left: 220px;
+                margin-top: 60px;
+                padding: 0 20px;
+                height: calc(100vh - 60px);
+                padding-bottom: 100px;
+                padding-top: 60px;
+            }
+        }
+        @media screen and (max-width: 768px) {
+            #main {
+                margin-top: 120px;
+                width: 100%;
+                margin: 0 auto;
+                padding: 0 20px;
+                padding-bottom: 100px;
+                padding-top: 60px;
+                overflow-y: auto;
+            }
+            #actions-small{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                gap: 10px;
+                font-size: 18px;
+                font-weight: 500;
+                padding: 0 20px;
+                margin: 0 auto;
+                overflow: hidden;
+            }
+            table{
+                margin: 0 auto;
+                width: 100%;
+            }
+            table tr{
+                padding: 5px;
+                text-align: center;
+                border: 1px solid #dee2e6;
+                text-overflow: ellipsis;
+            }
+        }
+    </style>
 </head>
 <body>
-    <main class="container d-flex justify-content-center align-items-center flex-column" style="min-height: 100vh;  margin-left: 220px">
-        <div class="container text-center mt-3 d-flex justify-content-center align-items-center flex-column bg-light rounded shadow p-3 w-100">
+    <main class="container d-flex justify-content-center align-items-center flex-column" id="main">
+        <div class="container text-center mt-3 d-flex justify-content-center align-items-center flex-column bg-light rounded shadow p-3">
             <h1 class="text-center">Clients</h1>
-            <table class="table table-striped table-hover table-bordered table-responsive mt-3 text-center w-50 mx-auto mb-4">
+            <table class="table table-striped table-hover table-bordered table-responsive mt-3 text-center mx-auto mb-4">
                 <thead>
                     <tr>
                         <th scope="col">ID</th>
@@ -52,7 +99,7 @@
             </tr>
         </thead>
             <tr>
-                <td>
+                <td id="actions-small">
                     <button class="btn btn-primary"><a href="{{route('admin_view_inactive')}}" class="text-light text-decoration-none">View Inactive Clients</a></button>
                     <button class="btn btn-primary"><a href="{{route('admin_sort')}}" class="text-light text-decoration-none">Sort Clients by Last Name</a></button>
                     <button class="btn btn-primary"><a href="{{route('admin_sort_email')}}" class="text-light text-decoration-none">Sort Clients by Email</a></button>

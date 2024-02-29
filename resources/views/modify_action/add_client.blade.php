@@ -6,13 +6,36 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>Add Client</title>
+    <style>
+        @media only screen and (min-width: 1024px) {
+            #main {
+                width: calc(100% - 220px);
+                margin-left: 220px;
+                padding: 0 20px;
+                height: calc(100vh - 60px);
+                padding-bottom: 100px;
+                padding-top: 60px;
+            }
+        }
+        @media screen and (max-width: 768px) {
+            #main {
+                margin-top: 120px;
+                width: 100%;
+                margin: 0 auto;
+                padding: 0 20px;
+                padding-bottom: 100px;
+                padding-top: 60px;
+                overflow-y: auto;
+            }
+        }
+    </style>
 </head>
 <body>
     @auth
     @include('/layouts/sidebar')
     @include('/layouts/header')
-    <main>
-    <div class="container mt-5 mb-5 p-5 rounded shadow w-50 mx-auto rounded shadow" style="background-color: #f8f9fa">
+    <main id="main">
+    <div class="container p-5 rounded shadow rounded shadow">
         <div class="row">
             <div class="col-md-6 offset-md-3">
                 <h1 class="mb-3 text-center">Add Client</h1>

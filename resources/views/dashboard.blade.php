@@ -6,61 +6,22 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
     <style>
-        body{
-            background-color: #f8f9fa;
-        }
-        /* For small devices (phones) */
-        @media only screen and (min-width: 600px) {
-          /* Add your responsive styles for small devices here */
-          body {
-              font-size: 14px;
-          }
-          h1 {
-              font-size: 24px;
-          }
-          main{
-              margin-left: 0;
-              margin-top: 60px;
-              min-height: 100vh;
-              padding: 20px;
-              background-color: #f8f9fa;
-              border-radius: 8px;
-          }
-          /* Add more specific styles for small devices as needed */
-        }
-        
-        /* For medium devices (tablets) */
-        @media only screen and (min-width: 601px) and (max-width: 1024px) {
-          /* Add your responsive styles for medium devices here */
-          body {
-              font-size: 16px;
-          }
-          h1 {
-              font-size: 28px;
-          }
-          main {
-              margin-left: 220px;
-              margin-top: 60px;
-              min-height: 100vh;
-              padding: 20px;
-              background-color: #f8f9fa;
-              border-radius: 8px;
-              box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-          }
-          /* Add more specific styles for medium devices as needed */
-        }
-        
-        /* For large devices (laptops/desktops) */
-        @media only screen and (min-width: 1025px) {
-          /* Add your responsive styles for large devices here */
-          body {
-              font-size: 18px;
-          }
-          h1 {
-              font-size: 32px;
-          }
-          /* Add more specific styles for large devices as needed */
+        @media screen and (max-width: 768px) {
+          .main{
 
+          }
+        }
+        @media only screen and (min-width: 1024px) {
+          #main{
+            margin-left: 220px;
+            width: calc(100% - 220px);
+            margin-top: 60px;
+          }
+          .section{
+            width: calc(100% - 220px);
+            margin-top: 60px;
+            padding: 0 20px;
+          }
         }
         @keyframes fadeOut {
             from { opacity: 1; }
@@ -77,7 +38,7 @@
 @if(auth()->check())
     @include('/layouts/sidebar')
     @include('/layouts/header')
-<main class="container text-center p-3 rounded shadow d-flex flex-column justify-content-center align-items-center" style="margin-left: 220px; min-height: 100vh; margin-top: 60px;">
+<main class="container text-center p-3 rounded shadow d-flex flex-column justify-content-center align-items-center" id="main">
 <h3 class="text-dark fw-bold">Welcome {{auth()->user()->name}}</h3>
 
 <section class="container mt-3 d-flex justify-content-center align-items-center bg-light rounded shadow p-3 flex-column">

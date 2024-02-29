@@ -58,7 +58,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/changepassword', [AdminController::class, 'change_password']);
     Route::post('/change_password_action', [AdminController::class, 'change_password_action']);
     Route::get('/reports', [AdminController::class, 'view_reports']);
-    Route::get('clients', [AdminController::class, 'view_clients']);
+    Route::get('/clients', [AdminController::class, 'view_clients']);
 });
 
 

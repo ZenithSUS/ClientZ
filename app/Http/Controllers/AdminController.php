@@ -76,17 +76,11 @@ class AdminController extends Controller
     }
 
     public function sort(){
-        return view('/dashboard', ['clients' => Client::all()->sortBy('last_name')->where('status', 'active'), 
-        'total_clients' => Client::count(),
-        'active_clients' => Client::where('status', 'active')->count(),
-        'inactive_clients' => Client::where('status', 'inactive')->count()]);
+        return view('/actions/feature_action/clients', ['clients' => Client::all()->sortBy('last_name')->where('status', 'active')]);
     }
 
     public function sort_email(){
-        return view('/dashboard', ['clients' => Client::all()->sortBy('email')->where('status', 'active'), 
-        'total_clients' => Client::count(),
-        'active_clients' => Client::where('status', 'active')->count(),
-        'inactive_clients' => Client::where('status', 'inactive')->count()]);
+        return view('/actions/feature_action/clients', ['clients' => Client::all()->sortBy('email')->where('status', 'active')]);
     }
 
     public function profile(){
@@ -125,10 +119,6 @@ class AdminController extends Controller
             $request->session()->regenerateToken();
             return redirect('/')->with('success', 'Account Deleted!');
         }
-    }
-
-    public function view_reports(){
-        return view('/actions/feature_action/reports');
     }
 
     public function view_clients(){
