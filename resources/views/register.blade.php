@@ -7,40 +7,23 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>Register</title>
     <style>
-        body {
-            background-color: #f2f2f2;
-        }
-        @media (min-width: 300px) and (max-width: 800px) {
-            .container {
-                width: 100%;
-                padding: 20px;
-                margin: 0;
-                border-radius: 0;
-                box-shadow: none;
-                background-color: transparent;
-                border: none;
-            }
-            .form-group {
-                margin-bottom: 10px;
-            }
-            .form-control {
-                margin-bottom: 10px;
-                padding: 10px;
-                font-size: 14px;
-                border-radius: 5px;
-                box-shadow: none;
-            }
-        }
+       @media screen and (max-width: 992pxpx) {
+           #form{
+               width: 100%;
+               padding: 20px;
+           }
+       }
 
     </style>
 </head>
 <body>
-    <div class="container mt-5 mb-5 p-5 bg-light rounded shadow w-50 mx-auto rounded shadow">
+<main class="container p-3 d-flex flex-column justify-content-center align-items-center">
+    <div class="container mt-5 mb-5 p-5 bg-light rounded shadow mx-auto rounded shadow" id="form">
         <div class="row">
         <a href="/"><button class="btn btn-primary">Go Back</button></a>
             <div class="col-md-6 offset-md-3">
                 <h1 class="mb-3 text-center">Register</h1>
-                <form action="/register_action" method="post">
+                <form action="/register_action" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group mb-3">
                         <label for="name">Name</label>
@@ -74,6 +57,7 @@
             </div>
         </div>
     </div>
+</main>
 </body>
 <script>
     $(document).ready(function() {

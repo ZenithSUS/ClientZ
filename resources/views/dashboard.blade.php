@@ -6,9 +6,11 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
     <style>
-        @media screen and (max-width: 768px) {
-          .main{
-
+        @media screen and (max-width: 992px) {
+          .dashboard-content{
+            font-size: 22px;
+            text-align: center;
+            width: 100%;
           }
         }
         @media only screen and (min-width: 1024px) {
@@ -45,24 +47,24 @@
   <h1>Dashboard</h1>
   <div class="container d-flex justify-content-between align-items-center flex-wrap w-100 mt-3" style="white-space: nowrap">
     <div class="bg-info rounded p-5 text-start w-25 col mx-3 text-white h-100">
-      <h1>Clients <br> {{$total_clients}}</h1>
+      <h1 class="dashboard-content">Clients <br> {{$total_clients}}</h1>
     </div>
     <div class="bg-success rounded p-5 text-start w-25 col mx-3 text-white h-100">
-      <h1>Active Clients <br> {{$active_clients}}</h1>
+      <h1 class="dashboard-content">Active Clients <br> {{$active_clients}}</h1>
     </div>
     <div class="bg-warning rounded p-5 text-start w-25 col mx-3 text-white h-100">
-      <h1>Inactive Clients <br> {{$inactive_clients}}</h1>
+      <h1 class="dashboard-content">Inactive Clients <br> {{$inactive_clients}}</h1>
     </div>
   </div>
   <div class="container d-flex justify-content-between align-items-center w-100 mt-3" style="white-space: nowrap">
     <div class="rounded p-5 text-start w-25 col mx-3" style="background-color: darkblue; color: white">
-      <h1>Departments <br> 10</h1>
+      <h1 class="dashboard-content">Departments <br> 10</h1>
     </div>
     <div class="rounded p-5 text-start w-25 col mx-3" style="background-color: darkred; color: white">
-      <h1>Total Payment <br> N/A</h1>
+      <h1 class="dashboard-content">Total Payment <br> N/A</h1>
     </div>
     <div class="rounded p-5 text-start w-25 col mx-3" style="background-color: darkgreen; color: white">
-      <h1>Total Income <br> N/A</h1>
+      <h1 class="dashboard-content">Total Income <br> N/A</h1>
     </div>
   </div>
 </section>

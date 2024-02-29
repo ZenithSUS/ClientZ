@@ -41,6 +41,7 @@
             table{
                 margin: 0 auto;
                 width: 100%;
+                border: 1px solid #dee2e6;
             }
             table tr{
                 padding: 5px;
