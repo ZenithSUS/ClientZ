@@ -29,6 +29,18 @@
                 margin-left: 220px;
             }
         }
+        @media screen and (max-width: 992px) {
+            .header {
+                width: 100%;
+                background-color: #f8f9fa;
+                border-bottom: 1px solid #e9ecef;
+                box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+                height: 60px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+        }
         @media screen and (max-width: 768px) {
             .header {
                 width: 100%;

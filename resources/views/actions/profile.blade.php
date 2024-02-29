@@ -6,12 +6,21 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>Profile</title>
+    <style>
+        @media only screen and (min-width: 1024px) {
+            #main {
+               width: calc(100% - 220px);
+               margin-left: 220px;
+               margin-top: 60px; 
+            }
+        }
+    </style>
 </head>
 <body>
 @if(auth()->check())
     @include('/layouts/sidebar')
     @include('layouts.header')
-    <main class="mt-5">
+    <main class="container p-5" id="main">
     <div class="container text-center mt-5 p-5 bg-light rounded shadow mb-5 w-50 rounded shadow d-flex flex-column justify-content-center align-items-center">
         <h1 class="mb-4 text-center text-bold">Profile</h1>
         <div>

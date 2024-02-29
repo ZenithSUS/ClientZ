@@ -6,12 +6,22 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>Edit Client</title>
+    <style>
+        @media only screen and (min-width: 1024px) {
+            #main{
+                margin-left: 220px;
+                width: calc(100% - 220px);
+                margin-top: 60px;
+            }
+        }
+    </style>
 </head>
 <body>
 @if(auth()->check())
     @include('/layouts/sidebar')
     @include('/layouts/header')
-    <div class="container mt-5 mb-5 p-5 bg-light rounded shadow w-50 mx-auto rounded shadow">
+    <main class="container p-3 rounded shadow d-flex flex-column justify-content-center align-items-center" id="main">
+    <div class="container mb-5 p-5 bg-light rounded shadow w-75 mx-auto rounded shadow">
         <div class="row">
             <div class="col-md-6 offset-md-3">
                 <h1 class="mb-4 text-center text-bold">Edit Client</h1>
@@ -50,6 +60,7 @@
             </div>
         </div>
     </div>
+    </main>
     @else
     <script>
         alert("Sesssion Expired. Login Again");

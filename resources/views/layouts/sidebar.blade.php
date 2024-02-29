@@ -16,15 +16,10 @@
             }
         }
 
-        @media only screen and (min-width: 1024px) {
+        @media screen and (max-width: 992px) {
             .sidebar {
-                width: 220px;
-                background-color: #f8f9fa;
-                border-right: 1px solid #dee2e6;
-                box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-                height: 100%;
-                position: fixed;
-                top: 0;
+                display: none;
+                width: 100%;
             }
         }
        
@@ -67,7 +62,6 @@
             <li><a href="/dashboard" class="text-decoration-none text-dark">&#9751; Dashboard</a></li>
             <li><a href="/clients" class="text-decoration-none text-dark">&#9756; Clients</a></li>
             <li><a href="{{ route('add') }}" class="text-decoration-none text-dark">&#9755; Add Client</a></li>
-            <li><a href="/payments" class="text-decoration-none text-dark">&#9862; Payments</a></li>
             <li><a href="/general" class="text-decoration-none text-dark">&#8486; General Management</a></li>
         </ul>
         </div>

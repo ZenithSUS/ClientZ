@@ -3,12 +3,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>View Client</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        @media only screen and (min-width: 1024px) {
+            #main {
+               margin-left: 220px;
+               width: calc(100% - 220px);
+               padding: 20px;
+               overflow-y: auto; 
+            }
+        }
+        @media screen and (max-width: 992px) {
+            #main {
+                width: 100%;
+                padding: 20px;
+                overflow-y: auto;
+            }
+        }
+    </style>
 </head>
 <body>
     @if(auth()->check())
     @include('/layouts/sidebar')
     @include('/layouts/header')
-    <main class="container d-flex justify-content-center align-items-center flex-column" style="min-height: 100vh; margin-top: 100px; margin-left: 220px">
+    <main class="container d-flex justify-content-center align-items-center flex-column" id="main">
         <h1 class="text-center">Client Details</h1>
         <div class="container mt-3 d-flex justify-content-center align-items-center">
             <table class="table table-striped table-hover table-bordered mt-3 text-center w-75 mx-auto">

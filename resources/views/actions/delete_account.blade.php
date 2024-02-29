@@ -5,10 +5,19 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
     <style>
-        @media screen and (max-width: 600px) {
-            .navbar {
-                flex-direction: column;
-                align-items: flex-start;
+        @media only screen and (min-width: 1024px) {
+            #main {
+               margin-left: 220px;
+               margin-top: 60px;
+               width: calc(100% - 220px); 
+            }
+        }
+        @media screen and (max-width: 992px) {
+            #main {
+                width: 100%;
+                margin-top: 60px;
+                margin-left: 0;
+                padding: 0;
             }
         }
     </style>
@@ -18,7 +27,7 @@
     @if(auth()->check())
     @include('/layouts/sidebar')
     @include('/layouts/header')
-    <main class="container text-center d-flex flex-column justify-content-center align-items-center" style="min-height: 100vh; margin-left: 220px">
+    <main class="container text-center d-flex flex-column justify-content-center align-items-center" id="main">
     <div class="container text-center p-5 bg-light rounded shadow p-3 mb-5 w-50">
         <h1>Delete Account</h1>
         <p class="lead">Are you sure you want to delete your account?</p> 
