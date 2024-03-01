@@ -23,6 +23,17 @@
                 padding: 0 20px;
             }
         }
+        @media screen and (max-width: 768px) {
+            #main {
+                margin-top: 120px;
+                width: 100%;
+                margin: 0 auto;
+                padding: 0 20px;
+            }
+        }
+        .description-text{
+            text-overflow: ellipsis;
+        }
     </style>
 </head>
 <body>
@@ -65,7 +76,7 @@
             @foreach($departments as $department)
             <tr>
                 <td>{{ $department->name }}</td>
-                <td>{{ $department->description }}</td>
+                <td id="description-text">{{ $department->description }}</td>
             </tr>
             @endforeach
         </tbody>
