@@ -68,7 +68,7 @@
                     </div>
                     <div class="form-group mb-3">
                         <label for="company">Company</label>
-                        <select type="text" id="company" name="company" class="form-control" value="{{ old('company') }}">
+                        <select type="text" id="company" name="company_id" class="form-control" value="{{ old('company') }}">
                                 @foreach($companies as $company)
                                     <option value="{{ $company->id }}">{{ $company->name }}</option>
                                 @endforeach
@@ -77,7 +77,7 @@
                     </div>
                     <div class="form-group mb-3">
                         <label for="department">Department</label>
-                        <select type="text" id="department" name="department" class="form-control" value="{{ old('department') }}">
+                        <select type="text" id="department" name="department_id" class="form-control" value="{{ old('department') }}">
                                 @foreach($departments as $department)
                                     <option value="{{ $department->id }}">{{ $department->name }}</option>
                                 @endforeach

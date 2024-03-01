@@ -12,4 +12,9 @@ class Departments extends Model
         'description',
         'company_id'
     ];
+
+    public function company()
+    {
+        return $this->belongsTo(Companies::class);
+    }
 }

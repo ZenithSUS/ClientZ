@@ -13,5 +13,8 @@ class Client extends Model
         'last_name',
         'email',
         'phone',
+        'company_id',
+        'department_id',
+        'status'
     ];
 }

@@ -26,10 +26,12 @@ class AdminController extends Controller
             'middle_name' => 'required',
             'last_name' => 'required',
             'email' => ['required', 'unique:clients'],
-            'phone' => ['required', 'unique:clients']
+            'phone' => ['required', 'unique:clients'],
+            'company_id' => 'required',
+            'department_id' => 'required'
         ]);
         Client::create($incomingFields);
-        return redirect('/feature_action/clients')->with('success', 'Client Added');
+        return redirect('/actions/feature_action/clients')->with('success', 'Client Added');
     }
 
     public function view_edit_client($id){
