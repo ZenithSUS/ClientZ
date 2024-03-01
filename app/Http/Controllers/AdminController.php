@@ -3,6 +3,9 @@
 
 namespace App\Http\Controllers;
 use App\Models\Client;
+use App\Models\Companies;
+use App\Models\Departments;
+use App\Models\Users;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -11,7 +14,9 @@ class AdminController extends Controller
 {
     public function view_add_client()
     {
-        return view('/modify_action/add_client');
+        return view('/modify_action/add_client', 
+        ['companies' => Companies::all(),
+         'departments' => Departments::all()]);
     }
 
     public function add_client_action(Request $request)
@@ -24,7 +29,7 @@ class AdminController extends Controller
             'phone' => ['required', 'unique:clients']
         ]);
         Client::create($incomingFields);
-        return redirect('/dashboard')->with('success', 'Client Added');
+        return redirect('/feature_action/clients')->with('success', 'Client Added');
     }
 
     public function view_edit_client($id){
@@ -42,7 +47,7 @@ class AdminController extends Controller
         ]);
         $client = Client::find($id);
         $client->update($incomingFields);
-        return redirect('/dashboard')->with('success', 'Client Updated');
+        return redirect('/feature_action/clients')->with('success', 'Client Updated');
     }
 
     public function view_inactive_clients(){
@@ -54,7 +59,7 @@ class AdminController extends Controller
         $client = Client::find($id);
         $client->status = 'active';
         $client->save();
-        return redirect('/dashboard')->with('success', 'Client Restored');
+        return redirect('/feature_action/clients')->with('success', 'Client Restored');
     }
     
 
@@ -63,7 +68,7 @@ class AdminController extends Controller
         if(auth()->user()){
             $client->status = 'inactive';
             $client->save();
-            return redirect('/dashboard')->with('success', 'Client Deleted');
+            return redirect('/feature_action/clients')->with('success', 'Client Deleted');
         }
         else{
             return redirect('/loginview')->with('error', 'Unauthorized');
@@ -123,5 +128,56 @@ class AdminController extends Controller
 
     public function view_clients(){
         return view('/actions/feature_action/clients', ['clients' => Client::all()->where('status', 'active')]);
+    }
+
+    public function view_general(){
+        return view('/actions/feature_action/general', 
+        ['departments' => Departments::all(), 
+        'companies' => Companies::all(),
+        'data' => [
+            'department' => Departments::all()->count(),
+            'companies' => Companies::all()->count()
+        ]]);
+    }
+
+    public function view_all_departments(){
+        return view('/actions/feature_action/departments', ['departments' => Departments::all()]);
+    }
+    public function view_departments(){
+        return view('/actions/feature_action/create_department', ['companies' => Companies::all()]);
+    }
+
+    public function create_department_action(Request $request){
+        $incomingFields = $request->validate([
+            'name' => 'required',
+            'description' => 'required',
+            'company_id' => 'required'
+        ]);
+        Departments::create($incomingFields);
+        return redirect('/feature_action/departments')->with('success', 'Department Added');
+    }
+
+    public function view_companies(){
+        return view('/actions/feature_action/create_company');
+    }
+
+    public function view_all_companies(){
+        return view('/actions/feature_action/companies', ['companies' => Companies::all()]);
+    }
+
+    public function create_company_action(Request $request){
+        $incomingFields = $request->validate([
+            'name' => 'required',
+            'email' => ['required', 'unique:companies,email'],
+            'website' => ['required', 'unique:companies,website']
+        ]);
+        Companies::create($incomingFields);
+        return redirect('/feature_action/companies')->with('success', 'Company Added');
+    }
+    
+    public function delete_company_action($id){
+        $company = Companies::find($id);
+        $company->delete();
+        return redirect('/feature_action/companies')->with('success', 'Company Deleted');
     }
 }

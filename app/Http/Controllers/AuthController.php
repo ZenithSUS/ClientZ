@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Client;
+use App\Models\Departments;
+use App\Models\Companies;
 use Illuminate\Http\Request;
 
 class AuthController extends Controller
@@ -26,7 +28,9 @@ class AuthController extends Controller
         return view('/dashboard', ['clients' => Client::all()->where('status', 'active'), 
         'total_clients' => Client::count(),
         'active_clients' => Client::where('status', 'active')->count(),
-        'inactive_clients' => Client::where('status', 'inactive')->count()]
+        'inactive_clients' => Client::where('status', 'inactive')->count(),
+        'total_departments' => Departments::count(),
+        'total_companies' => Companies::count()]
     );
     }
     public function register(){
@@ -44,7 +48,7 @@ class AuthController extends Controller
         if($request->password == $request->password_confirmation){
             $incomingFields['password'] = bcrypt($incomingFields['password']);
             User::create($incomingFields);
-            return redirect('/');
+            return redirect('/')->with('success', 'Your account has been created!');
         }
         else{
             return redirect('/register')->with('password_not_match', 'Passwords do not match');

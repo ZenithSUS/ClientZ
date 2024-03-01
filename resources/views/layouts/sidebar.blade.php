@@ -37,6 +37,7 @@
             z-index: 999;
             overflow-y: auto;
             transition: transform 0.3s ease-in-out;
+            overflow: hidden;
         }
         .sidebar a {
             display: block;

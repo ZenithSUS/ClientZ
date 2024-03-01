@@ -7,10 +7,17 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>Register</title>
     <style>
-       @media screen and (max-width: 992pxpx) {
+       @media screen and (max-width: 992px) {
            #form{
                width: 100%;
                padding: 20px;
+           }
+       }
+       @media screen and (min-width: 1024px) {
+           #form{
+               width: 50%;
+               padding: 20px;
+               margin: 0 auto;
            }
        }
 

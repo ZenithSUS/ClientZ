@@ -20,7 +20,7 @@
 @if(auth()->check())
     @include('/layouts/sidebar')
     @include('layouts.header')
-    <main class="container p-5" id="main">
+    <main class="container d-flex justify-content-center align-items-center flex-column" id="main">
     <div class="container text-center mt-5 p-5 bg-light rounded shadow mb-5 w-50 rounded shadow d-flex flex-column justify-content-center align-items-center">
         <h1 class="mb-4 text-center text-bold">Profile</h1>
         <div>

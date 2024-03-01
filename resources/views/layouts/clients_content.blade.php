@@ -50,6 +50,14 @@
                 text-overflow: ellipsis;
             }
         }
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
+        
+        .fadeOut {
+            animation: fadeOut 3s;
+        }
     </style>
 </head>
 <body>
@@ -57,6 +65,7 @@
         <div class="container text-center mt-3 d-flex justify-content-center align-items-center flex-column bg-light rounded shadow p-3">
             <h1 class="text-center">Clients</h1>
             <table class="table table-striped table-hover table-bordered table-responsive mt-3 text-center mx-auto mb-4">
+                @if(count($clients) > 0)
                 <thead>
                     <tr>
                         <th scope="col">ID</th>
@@ -68,6 +77,9 @@
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
+                @else
+                    <h3 class="text-center text-danger">No clients found</h3>
+                @endif
                 <tbody>
                     @foreach($clients as $client)
                         <tr>
@@ -108,5 +120,18 @@
             </tr>
     </table>
 </main>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var successMessage = document.getElementById('successMessage');
+        if (successMessage) {
+            setTimeout(function() {
+                successMessage.classList.add('fadeOut');
+                setTimeout(function() {
+                    successMessage.style.display = 'none';
+                }, 1000); // 1 second to fade out
+            }, 3000); // 3 seconds to display
+        }
+    });
+</script>
 </body>
 </html>

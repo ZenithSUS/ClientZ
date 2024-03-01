@@ -12,9 +12,9 @@
                 width: calc(100% - 220px);
                 margin-left: 220px;
                 padding: 0 20px;
-                height: calc(100vh - 60px);
                 padding-bottom: 100px;
                 padding-top: 60px;
+                margin-top: 60px;
             }
         }
         @media screen and (max-width: 768px) {
@@ -34,8 +34,8 @@
     @auth
     @include('/layouts/sidebar')
     @include('/layouts/header')
-    <main id="main">
-    <div class="container p-5 rounded shadow rounded shadow">
+    <main class="container d-flex justify-content-center align-items-center flex-column" id="main">
+    <div class="container p-5 rounded shadow rounded shadow w-75">
         <div class="row">
             <div class="col-md-6 offset-md-3">
                 <h1 class="mb-3 text-center">Add Client</h1>
@@ -65,6 +65,24 @@
                         <label for="phone">Phone</label>
                         <input type="text" id="phone" name="phone" class="form-control" value="{{ old('phone') }}">
                         <span class="text-danger">@error('phone'){{ $message }}@enderror</span>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="company">Company</label>
+                        <select type="text" id="company" name="company" class="form-control" value="{{ old('company') }}">
+                                @foreach($companies as $company)
+                                    <option value="{{ $company->id }}">{{ $company->name }}</option>
+                                @endforeach
+                        </select>
+                        <span class="text-danger">@error('company'){{ $message }}@enderror</span>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="department">Department</label>
+                        <select type="text" id="department" name="department" class="form-control" value="{{ old('department') }}">
+                                @foreach($departments as $department)
+                                    <option value="{{ $department->id }}">{{ $department->name }}</option>
+                                @endforeach
+                        </select>
+                        <span class="text-danger">@error('department'){{ $message }}@enderror</span>
                     </div>
                     <div class="form-group mb-3">
                         <button type="submit" class="btn btn-primary">Add</button>
