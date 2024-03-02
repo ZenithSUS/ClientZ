@@ -29,6 +29,22 @@
                 margin: 0 auto;
                 padding: 0 20px;
             }
+            table {
+                font-size: 12px;
+                margin: 0 auto;
+                width: 100%;
+            }
+            table tr {
+                padding: 5px;
+                text-align: center;
+            }
+            #actions {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                gap: 10px;
+                font-size: 18px;
+            }
         }
         @keyframes fadeOut {
             from { opacity: 1; }
@@ -38,7 +54,7 @@
         .fadeOut {
             animation: fadeOut 3s;
         }
-        .description-text{
+        #description-text{
             text-overflow: ellipsis;
         }
     </style>
@@ -53,12 +69,10 @@
             </div>
         </div>
         <div class="container p-5 rounded shadow rounded shadow">
-            <div class="row">
-                <div class="col-md-6 offset-md-3">
                     <h1 class="mb-3 text-center">Departments</h1>
-                    <table class="table table-striped w-100">
+                    <table class="table table-striped table-bordered table-hover table-responsive table-condensed">
                         @if(count($departments) > 0)
-                        <thead>
+                        <thead class="table-dark">
                             <tr>
                                 <th>Name</th>
                                 <th>Description</th>
@@ -67,10 +81,10 @@
                         </thead>
                         <tbody class="table-group-divider">
                             @foreach($departments as $department)
-                            <tr>
+                            <tr class="align-middle">
                                 <td>{{ $department->name }}</td>
                                 <td id="description-text">{{ $department->description }}</td>
-                                <td class="d-flex gap-3">
+                                <td class="d-flex gap-3" id="actions">
                                     <a href="" class="btn btn-primary">Edit</a>
                                     <a href="" class="btn btn-danger">Delete</a>
                                 </td>
@@ -84,13 +98,11 @@
                         @endif
 
                         @if(session()->has('success'))
-                            <div class="alert alert-success">
+                            <div class="alert alert-success" id="successMessage">
                                 {{ session('success') }}
                             </div>
                         @endif
                     </table>
-                </div>
-            </div>
         </div>
     </main>
     <script>

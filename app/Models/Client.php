@@ -17,4 +17,14 @@ class Client extends Model
         'department_id',
         'status'
     ];
+
+    public function company()
+    {
+        return $this->belongsTo(Companies::class);
+    }
+
+    public function department()
+    {
+        return $this->belongsTo(Departments::class);
+    }
 }

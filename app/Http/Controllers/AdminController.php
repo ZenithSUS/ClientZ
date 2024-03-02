@@ -1,14 +1,14 @@
 <?php
 
-
 namespace App\Http\Controllers;
 use App\Models\Client;
 use App\Models\Companies;
 use App\Models\Departments;
-use App\Models\Users;
+use App\Models\Users;;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
@@ -31,12 +31,15 @@ class AdminController extends Controller
             'department_id' => 'required'
         ]);
         Client::create($incomingFields);
-        return redirect('/actions/feature_action/clients')->with('success', 'Client Added');
+        return redirect('/clients')->with('success', 'Client Added');
     }
 
     public function view_edit_client($id){
         $client = Client::find($id);
-        return view('/modify_action/edit_client', ['client' => $client]);
+        return view('/modify_action/edit_client', 
+        ['client' => $client,
+         'companies' => Companies::all(),
+         'departments' => Departments::all()]);
     }
 
     public function edit_client_action(Request $request, $id){
@@ -45,11 +48,13 @@ class AdminController extends Controller
             'middle_name' => 'required',
             'last_name' => 'required',
             'email' => ['required', 'unique:clients,email,'.$id],
-            'phone' => ['required', 'unique:clients,phone,'.$id]
+            'phone' => ['required', 'unique:clients,phone,'.$id],
+            'company_id' => 'required',
+            'department_id' => 'required'
         ]);
         $client = Client::find($id);
         $client->update($incomingFields);
-        return redirect('/feature_action/clients')->with('success', 'Client Updated');
+        return redirect('/clients')->with('success', 'Client Updated');
     }
 
     public function view_inactive_clients(){
@@ -83,11 +88,25 @@ class AdminController extends Controller
     }
 
     public function sort(){
-        return view('/actions/feature_action/clients', ['clients' => Client::all()->sortBy('last_name')->where('status', 'active')]);
+        $result = DB::table('clients')
+        ->join('companies', 'clients.company_id', '=', 'companies.id')
+        ->join('departments', 'clients.department_id', '=', 'departments.id')
+        ->select('clients.*', 'companies.name as company_name', 'departments.name as department_name')
+        ->where('status', 'active')
+        ->orderBy('first_name')
+        ->get();
+        return view('/actions/feature_action/clients', ['clients' => $result]);
     }
 
     public function sort_email(){
-        return view('/actions/feature_action/clients', ['clients' => Client::all()->sortBy('email')->where('status', 'active')]);
+        $result = DB::table('clients')
+        ->join('companies', 'clients.company_id', '=', 'companies.id')
+        ->join('departments', 'clients.department_id', '=', 'departments.id')
+        ->select('clients.*', 'companies.name as company_name', 'departments.name as department_name')
+        ->where('status', 'active')
+        ->orderBy('email')
+        ->get();
+        return view('/actions/feature_action/clients', ['clients' => $result]);
     }
 
     public function profile(){
@@ -129,7 +148,14 @@ class AdminController extends Controller
     }
 
     public function view_clients(){
-        return view('/actions/feature_action/clients', ['clients' => Client::all()->where('status', 'active')]);
+        $result = DB::table('clients')
+            ->join('companies', 'clients.company_id', '=', 'companies.id')
+            ->join('departments', 'clients.department_id', '=', 'departments.id')
+            ->select('clients.*', 'companies.name as company_name', 'departments.name as department_name')
+            ->where('clients.status', 'active')
+            ->get();
+    
+        return view('/actions/feature_action/clients', ['clients' => $result]);
     }
 
     public function view_general(){
@@ -170,6 +196,7 @@ class AdminController extends Controller
     public function create_company_action(Request $request){
         $incomingFields = $request->validate([
             'name' => 'required',
+            'description' => 'required',
             'email' => ['required', 'unique:companies,email'],
             'website' => ['required', 'unique:companies,website']
         ]);

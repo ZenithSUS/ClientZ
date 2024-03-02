@@ -30,6 +30,11 @@
                 margin: 0 auto;
                 padding: 0 20px;
             }
+            table {
+                font-size: 12px;
+                margin: 0 auto;
+                width: 100%;
+            }
         }
         @keyframes fadeOut {
             from { opacity: 1; }
@@ -51,12 +56,10 @@
             </div>
         </div>
         <div class="container p-5 rounded shadow rounded shadow">
-            <div class="row">
-                <div class="col-md-6 offset-md-3">
                     <h1 class="mb-3 text-center">Companies</h1>
                     <table class="table table-striped table-bordered table-hover table-responsive table-condensed">
                         @if(count($companies) > 0)
-                        <thead>
+                        <thead class="table-dark">
                             <tr>
                                 <th>Name</th>
                                 <th>Description</th>
@@ -66,12 +69,13 @@
                         </thead>
                         <tbody>
                             @foreach($companies as $company)
-                                <tr>
+                                <tr class="align-middle">
                                     <td>{{ $company->name }}</td>
-                                    <td>{{ $company->description }}</td>
+                                    <td class="text-wrap">{{ $company->description }}</td>
                                     <td>{{ $company->website }}</td>
-                                    <td>
+                                    <td class="d-flex gap-3 justify-content-center flex-wrap">
                                         <button class="btn btn-danger"><a href="/companies/{{ $company->id }}" class="text-white text-decoration-none">Delete</a></button>
+                                        <button class="btn btn-primary"><a href="/companies/{{ $company->id }}/edit" class="text-white text-decoration-none">Edit</a></button>
                                     </td>
                                 </tr>
                             @endforeach
@@ -89,8 +93,6 @@
                         </div>
                     @endif
                 </div>
-            </div>
-        </div>
     </main>
     <script>
     document.addEventListener("DOMContentLoaded", function() {

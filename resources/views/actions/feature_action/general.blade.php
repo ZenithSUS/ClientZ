@@ -66,7 +66,7 @@
         </div>
     <table class="table table-striped table-hover table-bordered table-responsive mt-3 text-center mx-auto mb-4 w-100">
         @if(count($departments) > 0)
-        <thead>
+        <thead class="table-dark">
             <tr>
                 <th>Name</th>
                 <th>Description</th>
@@ -74,7 +74,7 @@
         </thead>
         <tbody>
             @foreach($departments as $department)
-            <tr>
+            <tr class="align-middle">
                 <td>{{ $department->name }}</td>
                 <td id="description-text">{{ $department->description }}</td>
             </tr>
@@ -93,9 +93,9 @@
             <h4 class="text-center">List of Companies</h4>
             <a href="{{ route('companies.create') }}" class="btn btn-primary">+ Add Company</a>
         </div>
-    <table class="table table-striped table-hover table-bordered table-responsive mt-3 text-center mx-auto mb-4">
+    <table class="table table-striped table-hover table-bordered table-responsive mt-3 text-center text-wrap mx-auto mb-4">
         @if(count($companies) > 0)
-        <thead>
+        <thead class="table-dark">
             <tr>
                 <th>Name</th>
                 <th>Email</th>
@@ -103,7 +103,7 @@
         </thead>
         <tbody>
             @foreach($companies as $company)
-            <tr>
+            <tr class="align-middle">
                 <td>{{ $company->name }}</td>
                 <td>{{ $company->email }}</td>
             </tr>

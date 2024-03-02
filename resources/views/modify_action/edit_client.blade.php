@@ -58,6 +58,24 @@
                         <input type="text" id="phone" name="phone" class="form-control" value="{{$client->phone}}">
                         <span class="text-danger">@error('phone'){{ $message }}@enderror</span>
                     </div>
+                    <div class="form-group mb-3">
+                        <label for="company">Company</label>
+                        <select name="company_id" id="company" class="form-control">
+                            @foreach($companies as $company)
+                                <option value="{{$company->id}}" @if($company->id == $client->company_id) selected @endif>{{$company->name}}</option>
+                            @endforeach
+                        </select>
+                        <span class="text-danger">@error('company'){{ $message }}@enderror</span>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="Department">Department</label>
+                        <select name="department_id" id="department" class="form-control">
+                            @foreach($departments as $department)
+                                <option value="{{$department->id}}" @if($department->id == $client->department_id) selected @endif>{{$department->name}}</option>
+                            @endforeach
+                        </select>
+                        <span class="text-danger">@error('department'){{ $message }}@enderror</span>
+                    </div>
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary">Update Client</button>
                         <a href="/dashboard" class="btn btn-secondary">Cancel</a>

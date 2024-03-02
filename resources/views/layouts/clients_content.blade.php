@@ -17,6 +17,22 @@
                 padding-top: 60px;
             }
         }
+        @media screen and (max-width: 992px) {
+            #main {
+                margin-top: 120px;
+                width: 100%;
+                margin: 0 auto;
+                padding: 0 20px;
+                padding-bottom: 100px;
+            }
+            #actions-small{
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                align-items: center;
+                gap: 10px;
+            }
+        }
         @media screen and (max-width: 768px) {
             #main {
                 margin-top: 120px;
@@ -29,6 +45,7 @@
             }
             #actions-small{
                 display: flex;
+                flex-direction: column;
                 justify-content: space-between;
                 align-items: center;
                 gap: 10px;
@@ -39,6 +56,7 @@
                 overflow: hidden;
             }
             table{
+                font-size: 18px;
                 margin: 0 auto;
                 width: 100%;
                 border: 1px solid #dee2e6;
@@ -62,19 +80,18 @@
 </head>
 <body>
     <main class="container d-flex justify-content-center align-items-center flex-column" id="main">
-        <div class="container text-center mt-3 d-flex justify-content-center align-items-center flex-column bg-light rounded shadow p-3">
+        <div class="container text-center mt-3 d-flex justify-content-center align-items-center flex-column bg-light rounded shadow p-3 w">
             <h1 class="text-center">Clients</h1>
             <table class="table table-striped table-hover table-bordered table-responsive mt-3 text-center mx-auto mb-4">
                 @if(count($clients) > 0)
-                <thead>
-                    <tr>
-                        <th scope="col">ID</th>
-                        <th scope="col">First</th>
-                        <th scope="col">Middle</th>
-                        <th scope="col">Last</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Phone</th>
-                        <th scope="col">Action</th>
+                <thead class="table-dark">
+                    <tr class="align-middle w-100">
+                       <th>Full Name</th>
+                       <th>Email</th>
+                       <th>Phone</th>
+                       <th>Company</th>
+                       <th>Department</th>
+                       <th>Actions</th>
                     </tr>
                 </thead>
                 @else
@@ -82,14 +99,14 @@
                 @endif
                 <tbody>
                     @foreach($clients as $client)
-                        <tr>
-                            <th scope="row">{{$client->id}}</th>
-                            <td>{{$client->first_name}}</td>
-                            <td>{{$client->middle_name}}</td>
-                            <td>{{$client->last_name}}</td>
+                        <tr class="align-middle w-100">
+                            <td class="text-center text-nowrap">{{$client->first_name}} {{$client->middle_name}} {{$client->last_name}}</td>
                             <td>{{$client->email}}</td>
                             <td>{{$client->phone}}</td>
-                            <td class="d-flex justify-content-center align-items-center gap-2"><button class="btn btn-primary"><a href="/admin_edit/{{$client->id}}" class="text-light text-decoration-none">Edit</a></button> 
+                            <td>{{$client->company_name}}</td>
+                            <td>{{$client->department_name}}</td>
+                            <td class="d-flex justify-content-center align-items-center gap-2">
+                                <button class="btn btn-primary"><a href="/admin_edit/{{$client->id}}" class="text-light text-decoration-none">Edit</a></button> 
                                 <button class="btn btn-danger"><a href="/admin_delete/{{$client->id}}" class="text-light text-decoration-none">Delete</a></button>
                                 <button class="btn btn-primary"><a href="/admin_view/{{$client->id}}" class="text-light text-decoration-none">View</a></button>
                             </td>
