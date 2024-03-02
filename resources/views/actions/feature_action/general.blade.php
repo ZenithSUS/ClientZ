@@ -14,6 +14,9 @@
                margin-top: 60px;
                padding: 0 20px;
             }
+            #actions button {
+                width: 30%;
+            }
         }
         @media screen and (max-width: 992px) {
             #main {
@@ -30,9 +33,14 @@
                 margin: 0 auto;
                 padding: 0 20px;
             }
-        }
-        .description-text{
-            text-overflow: ellipsis;
+            #actions {
+                flex-direction: column;
+            }
+
+            #actions button {
+                width: 100%;
+                margin-bottom: 10px;
+            }
         }
     </style>
 </head>
@@ -43,15 +51,15 @@
     <h1 class="mb-4 text-center text-bold">General Management</h1>
     <div class="container d-flex justify-content-center align-items-center">
         <div class="text-center mt-3 p-5 bg-light rounded shadow mb-5 w-100 rounded shadow d-flex justify-content-between">
-            <div class="w-50 d-flex justify-content-between mx-3">
+            <div class="w-50 d-flex justify-content-between mx-3" id="actions">
                 <h3 class="text-center">Departments: {{ $data['department'] }}</h3>
-                <button class="btn btn-primary w-25">
+                <button class="btn btn-primary">
                     <a href="{{ route('departments.view') }}" class="text-white text-decoration-none">View</a>
                 </button>
             </div>
-            <div class="w-50 d-flex justify-content-between mx-3">
+            <div class="w-50 d-flex justify-content-between mx-3" id="actions">
                 <h3 class="text-center">Companies: {{ $data['companies'] }}</h3>
-                <button class="btn btn-primary w-25">
+                <button class="btn btn-primary">
                     <a href="{{ route('companies.view') }}" class="text-white text-decoration-none">View</a>
                 </button>
             </div>
@@ -98,6 +106,7 @@
         <thead class="table-dark">
             <tr>
                 <th>Name</th>
+                <th>Description</th>
                 <th>Email</th>
             </tr>
         </thead>
@@ -105,6 +114,7 @@
             @foreach($companies as $company)
             <tr class="align-middle">
                 <td>{{ $company->name }}</td>
+                <td class="text-wrap">{{ $company->description }}</td>
                 <td>{{ $company->email }}</td>
             </tr>
             @endforeach
