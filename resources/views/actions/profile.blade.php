@@ -13,6 +13,29 @@
                margin-left: 220px;
                margin-top: 60px; 
             }
+            #profile{
+                width: 70%;
+            }
+        }
+        @media screen and (max-width: 992px) {
+            #main {
+                margin-top: 120px;
+                width: 100%;
+                margin: 0 auto;
+                padding: 0 20px;
+            }
+
+            #profile{
+                width: 90%;
+            }
+        }
+        @media screen and (max-width: 768px) {
+            #main {
+                margin-top: 120px;
+                width: 100%;
+                margin: 0 auto;
+                padding: 0 20px;
+            }
         }
     </style>
 </head>
@@ -21,7 +44,7 @@
     @include('/layouts/sidebar')
     @include('layouts.header')
     <main class="container d-flex justify-content-center align-items-center flex-column" id="main">
-    <div class="container text-center mt-5 p-5 bg-light rounded shadow mb-5 w-50 rounded shadow d-flex flex-column justify-content-center align-items-center">
+    <div class="container text-center mt-5 p-5 bg-light rounded shadow mb-5 rounded shadow d-flex flex-column justify-content-center align-items-center" id="profile">
         <h1 class="mb-4 text-center text-bold">Profile</h1>
         <div>
             <img src="{{ Auth::user()->profile_photo_url }}" alt="Profile Photo" class="rounded-circle" width="200" height="200">
